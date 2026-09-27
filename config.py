@@ -6,6 +6,8 @@ import pandas as pd
 DATASET_PATH = ""
 IMAGE_HEIGHT = 48
 BATCH_SIZE = 128
+best_model_path = ""
+ckpt_model_path = ""
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
