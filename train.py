@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from config import device, best_model_path, ckpt_model_path
 from models.captcha_model import model
-from dataset.dataloader import train_loader, test_loader, val_loader
+from dataset.dataloader import train_loader, val_loader
 from dataset.vocab import char2idx, idx2char, BLANK_IDX
 
 

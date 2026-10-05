@@ -6,3 +6,4 @@ Pillow
 matplotlib
 ipywidgets
 ipython
+pyttsx3
