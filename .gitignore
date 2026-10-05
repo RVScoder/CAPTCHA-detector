@@ -1,1 +1,3 @@
-captcha-dataset.zip
+*.zip
+*.pth
+output/
