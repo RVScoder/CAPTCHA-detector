@@ -4,12 +4,23 @@ import torch
 import matplotlib.pyplot as plt
 from dataset.vocab import idx2char, BLANK_IDX
 from models.captcha_model import model
-from tts import speak_captcha
 
 
 IMAGE_HEIGHT = 48
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 best_model_path = r"output\best_captcha_model (4).pth"
+
+
+model = model.to(device)
+
+checkpoint = torch.load(
+    best_model_path,
+    map_location=device
+)
+
+model.load_state_dict(checkpoint)
+model.eval()
+
 
 def predict(image_path, model):
 
@@ -83,27 +94,3 @@ def predict(image_path, model):
 
     return prediction, confidence, character_confidences
 
-
-
-
-input_image = input("Enter the image path: ")
-
-model = model.to(device)
-
-checkpoint = torch.load(
-    best_model_path,
-    map_location=device
-)
-
-model.load_state_dict(checkpoint)
-model.eval()
-
-prediction, confidence, character_confidences = predict(
-    input_image,
-    model
-)
-
-print("Predicted CAPTCHA:", prediction)
-print(f"Confidence: {confidence:.2%}")
-
-speak_captcha(prediction)

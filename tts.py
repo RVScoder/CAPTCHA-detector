@@ -1,8 +1,9 @@
 import pyttsx3
 
-engine = pyttsx3.init()
-
 def speak_captcha(prediction):
+    
+    engine = pyttsx3.init()
+
     speech = []
 
     for char in prediction:
